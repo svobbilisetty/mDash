@@ -1,0 +1,107 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="css/login.css">
+  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  </head>
+  <title>  </title>
+<h1 style="color:white">Login Form</h1>
+
+<center>Login Page
+
+<section class="login"><br>
+<br>
+<img src="images/key.png" class="a"></img>
+
+<body ng-app="myapp">
+<div ng-controller="myctrl" class="container">
+<form name="log" method="get" ng-submit="submit()"  action="http://localhost:8087/log">
+  <table border="0"> 
+  <br>
+  <div>
+  
+     <tr>
+      <td>
+          <label for="username"><p style="color:white">User Name:</p>
+    </td>
+    <td>
+    
+              <input type="name" name="uname" class="form-control" ng-model="uname" placeholder="name" >
+              
+              </div>
+          </label>
+  </td>
+      
+     </tr>    
+        <tr>
+        <td>  
+          <label for="password"><p style="color:white">Password: </p>
+     </td>
+     <td>
+          
+           <input type="Password" name="password" class="form-control" ng-model="password" placeholder="Your Password"   >
+        
+      </div>
+              </label>
+     </td>
+   </tr>
+         <br>
+    <tr>
+     
+       <td> 
+   <input type="submit" value="Login" id="buttons">
+    </form>
+    </td>
+          
+   </tr>
+   
+  </div>
+  </table>
+  
+    
+ 
+  
+  
+</div>
+</body>
+   </section>
+<script>
+var myapp = angular.module('myapp', []);
+ myapp.controller('myctrl', function ($scope,$http,$window,$location) {
+     // function to submit the form after all validation has occurred 
+     $scope.submit = function () {
+     
+     // Set the 'submitted' flag to true
+     $scope.submitted = true;
+     
+   var name=$scope.uname;
+  var pwd=$scope.password;
+  alert(name);
+   alert(pwd);
+  
+   $http.get('http://127.0.0.1:8087/log?uname='+name+'&password='+pwd)
+  .then(function(response) {
+  alert("haii");
+  
+  //$window.location.href ="button.html";
+   /*if( response=='true1')
+ {
+ alert("hai");
+        $window.location.href ="button.html";
+  }*/
+  
+   });
+    
+     
+     }; 
+    });
+
+</script>
+
+</html>

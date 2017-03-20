@@ -1,0 +1,148 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="css/login.css">
+  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  </head>
+  <title>  </title>
+
+
+<center>
+
+<section class="login"><br>
+<br>
+
+
+<body ng-app="myapp3">
+<div ng-controller="myctrl3" class="container">
+<form name="Form" method="GET" ng-submit="submit1()" action="http://localhost:8087/hello">
+  <table border="0"> 
+  <br>
+  <div>
+   <tr>
+      <td>
+          <label for="Instance name"><p style="color:white">Instance Name:</p>
+    </td>
+    <td>
+    
+              <input type="name" name="iname" class="form-control" ng-model="iname" placeholder="name" >
+              
+              </div>
+          </label>
+  </td>
+      
+     </tr>    
+     <tr>
+      <td>
+          <label for="username"><p style="color:white">User Name:</p>
+    </td>
+    <td>
+    
+              <input type="name" name="uname" class="form-control" ng-model="uname" placeholder="name" >
+              
+              </div>
+          </label>
+  </td>
+      
+     </tr>    
+        <tr>
+        <td>  
+          <label for="password"><p style="color:white">Password: </p>
+     </td>
+     <td>
+          
+           <input type="Password" name="password" class="form-control" ng-model="password" placeholder="Your Password"   >
+        
+
+              </label>
+     </td>
+   </tr>
+    <tr>
+      <td>
+          <label for="host"><p style="color:white">Host:</p>
+    </td>
+    <td>
+    
+              <input type="name" name="host" class="form-control" ng-model="host" placeholder="enter host" >
+              
+              </div>
+          </label>
+  </td>
+      
+     </tr>   
+ <tr>
+      <td>
+          <label for="port"><p style="color:white">Port:</p>
+    </td>
+    <td>
+    
+              <input type="name" name="port" class="form-control" ng-model="port" placeholder="enter port" >
+              
+              </div>
+          </label>
+  </td>
+      
+     </tr>    	 
+         <br>
+    <tr>
+     
+       <td> 
+   <input type="submit" value="save" id="buttons">
+    </form>
+    </td>
+          
+   </tr>
+   
+  </div>
+  </table>
+  
+    
+ 
+  
+  
+</div>
+</body>
+   </section>
+   </center>
+
+   <script>
+   var myapp = angular.module('myapp3', []);
+
+myapp.controller('myctrl3', function ($scope,$http,$window) {
+	
+    
+    $scope.submit1 = function(){
+    	
+    	$scope.submitted = true;
+        
+        if ($scope.Form.$valid) {
+        	 var ins=$scope.iname;
+        	
+         
+        	  $http.get('http://localhost:8087/hello?iname='+ins)
+             .then(function(response) {
+              if(response.status==200)
+        	     {
+            	  
+            	 $window.location.href ="button.html";
+       		   
+       		   }
+       	       else{
+       	    $window.location.href ="jenkin.html";
+       	       }
+                 });
+             }
+        }
+        else{
+        	alert("form invalid");
+        } 
+    }) 
+   </script>
+
+   </html>

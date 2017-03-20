@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="css/registration.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="javascripts/login.js"></script>
+</head>
+<center>
+<body ng-app="myapp2">
+<div ng-controller="myctrl2" >
+<form name="userForm" action="http://localhost:8087/button">
+<div class="testbox">
+  <br><br><br>
+  
+<div> <tr><center><input type="submit" value="ADD JENKINS" id="button"/></center></tr></div>
+</table>
+
+</div>
+
+
+</form>
+</div>
+</body>
+</center>
+<script>
+var myapp = angular.module('myapp', []);
+ myapp.controller('myctrl2', function ($scope,$http,$window,$location) {
+     // function to submit the form after all validation has occurred 
+     $scope.submit = function () {
+     
+     // Set the 'submitted' flag to true
+     $scope.submitted = true;
+     
+   var name=$scope.iname;
+  
+  alert(iname);
+   alert(pwd);
+  
+   $http.get('http://127.0.0.1:8087/hello?iname='+name)
+  .then(function(response) {
+  alert("haii");
+  
+  //$window.location.href ="button.html";
+   /*if( response=='true1')
+ {
+ alert("hai");
+        $window.location.href ="button.html";
+  }*/
+  
+   });
+    
+     
+     }; 
+    });
+
+ 
+</script>
+
+</html>
